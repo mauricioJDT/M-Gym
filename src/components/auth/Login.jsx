@@ -98,7 +98,7 @@ const Login = ({ onLogin }) => {
               <Dumbbell className="w-10 h-10 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-white mb-2">Bienvenido</h2>
-            <p className="text-gray-400">Ingresá a tu cuenta de M-GymSystem</p>
+            <p className="text-gray-400">Ingresa a tu cuenta de M-GymSystem</p>
           </div>
 
           {/* Formulario */}
