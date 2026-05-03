@@ -438,7 +438,7 @@ const Inicio = ({ user }) => {
                   <div>
                     <p className="text-orange-400 font-semibold text-lg">Membresías que vencen hoy</p>
                     <p className="text-3xl font-bold text-white">{stats.vencenHoy}</p>
-                    <p className="text-gray-400 text-sm mt-1">Hacé clic para gestionar</p>
+                    <p className="text-gray-400 text-sm mt-1">Haz clic para gestionar</p>
                   </div>
                 </div>
                 <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-orange-400 transition-all" />

@@ -410,7 +410,7 @@ const GestionPagos = ({ filtroInicial, onPagoRegistrado }) => {
 
   // Anular pago
   const anularPago = async (alumnoId) => {
-    if (!window.confirm(`¿Estás seguro de que querés ANULAR el pago del mes ${meses[mesActual - 1]} ${anioActual}?`)) return
+    if (!window.confirm(`¿Estás seguro de que quieres ANULAR el pago del mes ${meses[mesActual - 1]} ${anioActual}?`)) return
     if (!isOnline) { setErrorMessage('No hay conexión a internet.'); return }
 
     setLoading(true)
@@ -484,7 +484,7 @@ const GestionPagos = ({ filtroInicial, onPagoRegistrado }) => {
 
   const confirmarPagoPersonalizado = () => {
     const monto = parseFloat(montoPersonalizado)
-    if (isNaN(monto) || monto <= 0) { setErrorMessage('Ingresá un monto válido'); return }
+    if (isNaN(monto) || monto <= 0) { setErrorMessage('Ingresa un monto válido'); return }
     registrarPago(alumnoSeleccionado.id, monto)
     setModalPagoPersonalizado(false)
     setAlumnoSeleccionado(null)
@@ -1021,7 +1021,7 @@ const GestionPagos = ({ filtroInicial, onPagoRegistrado }) => {
                   value={montoPersonalizado}
                   onChange={(e) => setMontoPersonalizado(e.target.value)}
                   className="w-full px-3 py-2 bg-[#2d2d2d] border border-[#3d3d3d] rounded-lg text-white focus:outline-none focus:border-[#e31837] text-sm"
-                  placeholder="Ingresá el monto"
+                  placeholder="Ingresa el monto"
                 />
               </div>
               <div className="flex gap-3 pt-4">

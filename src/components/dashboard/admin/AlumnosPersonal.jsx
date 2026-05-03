@@ -263,7 +263,7 @@ const AlumnosPersonal = ({ onUsuarioCambiado }) => {
             } else if (error.message.includes('email')) {
               setModalErrorMessage(`El email "${formData.email}" ya está registrado.`)
             } else {
-              setModalErrorMessage('Ya existe un usuario con esos datos. Verificá que el nombre de usuario y email sean únicos.')
+              setModalErrorMessage('Ya existe un usuario con esos datos. Verifica que el nombre de usuario y email sean únicos.')
             }
           } else {
             throw error
@@ -281,7 +281,7 @@ const AlumnosPersonal = ({ onUsuarioCambiado }) => {
       if (onUsuarioCambiado) onUsuarioCambiado()
     } catch (error) {
       console.error('Error completo:', error)
-      setModalErrorMessage('Error al guardar el usuario. Verificá los datos e intentá nuevamente.')
+      setModalErrorMessage('Error al guardar el usuario. Verifica los datos e intenta nuevamente.')
     } finally {
       setVerificando(false)
       setLoading(false)
@@ -294,7 +294,7 @@ const AlumnosPersonal = ({ onUsuarioCambiado }) => {
       return
     }
 
-    if (!window.confirm(`¿Estás seguro de que querés eliminar al usuario "${username}"?`)) return
+    if (!window.confirm(`¿Estás seguro de que quieres eliminar al usuario "${username}"?`)) return
     
     setLoading(true)
     

@@ -33,7 +33,7 @@ const Register = ({ onBackToLogin }) => {
     setError('')
 
     if (!isOnline) {
-      setError('Sin conexión a internet. Verificá tu red e intentá de nuevo.')
+      setError('Sin conexión a internet. Verifica tu red e intenta de nuevo.')
       return
     }
 
@@ -54,7 +54,7 @@ const Register = ({ onBackToLogin }) => {
     }
 
     if (formData.nombre_completo.length < 3) {
-      setError('Ingresá tu nombre completo')
+      setError('Ingresa tu nombre completo')
       return
     }
 
@@ -87,7 +87,7 @@ const Register = ({ onBackToLogin }) => {
         } else if (existingRequest.estado === 'aprobada') {
           setError('Este usuario ya está registrado')
         } else if (existingRequest.estado === 'rechazada') {
-          setError('Tu solicitud anterior fue rechazada. Contactá al administrador.')
+          setError('Tu solicitud anterior fue rechazada. Contacta al administrador.')
         }
         setLoading(false)
         return
@@ -123,7 +123,7 @@ const Register = ({ onBackToLogin }) => {
 
     } catch (err) {
       console.error('Error al registrar:', err)
-      setError('Error al enviar la solicitud. Intentá de nuevo más tarde.')
+      setError('Error al enviar la solicitud. Intenta de nuevo más tarde.')
     } finally {
       setLoading(false)
     }
@@ -189,7 +189,7 @@ const Register = ({ onBackToLogin }) => {
               <UserPlus className="w-10 h-10 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-white mb-2">Registrarse</h2>
-            <p className="text-gray-400">Creá tu cuenta para acceder al sistema</p>
+            <p className="text-gray-400">Crea tu cuenta para acceder al sistema</p>
             <p className="text-gray-500 text-xs mt-2">Tu solicitud será revisada por el administrador</p>
           </div>
 
