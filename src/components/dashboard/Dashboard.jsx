@@ -347,7 +347,7 @@ const Dashboard = ({ user, onLogout, initialTab = 'inicio', onTabChange }) => {
               <div className="w-8 h-8 bg-[#e31837] rounded-lg flex items-center justify-center flex-shrink-0">
                 <Dumbbell className="w-4 h-4 text-white" />
               </div>
-              <span className="text-white font-bold truncate">M-GymSystem</span>
+              <span className="text-white font-bold truncate">M-Gym</span>
               <span className={`text-xs px-2 py-0.5 rounded-full flex-shrink-0 ${
                 user.rol === 'admin' ? 'bg-red-500/20 text-red-400' : 
                 user.rol === 'entrenador' ? 'bg-green-500/20 text-green-400' : 
@@ -450,7 +450,7 @@ const Dashboard = ({ user, onLogout, initialTab = 'inicio', onTabChange }) => {
               <div className="w-8 h-8 bg-[#e31837] rounded-lg flex items-center justify-center">
                 <Dumbbell className="w-4 h-4 text-white" />
               </div>
-              <span className="text-white font-bold text-lg">M-GymSystem</span>
+              <span className="text-white font-bold text-lg">M-Gym</span>
               <span className={`text-[10px] px-2 py-0.5 rounded-full ${
                 user.rol === 'admin' ? 'bg-red-500/20 text-red-400' : 
                 user.rol === 'entrenador' ? 'bg-green-500/20 text-green-400' : 

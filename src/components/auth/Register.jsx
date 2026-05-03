@@ -167,7 +167,7 @@ const Register = ({ onBackToLogin }) => {
         <div className="w-10 h-10 bg-[#e31837] rounded-xl flex items-center justify-center">
           <Dumbbell className="w-5 h-5 text-white" />
         </div>
-        <span className="text-white font-bold text-xl">M-Gym<span className="text-[#e31837]">System</span></span>
+        <span className="text-white font-bold text-xl">M-<span className="text-[#e31837]">Gym</span></span>
       </div>
 
       {/* Botón volver */}

@@ -77,7 +77,7 @@ const Login = ({ onLogin }) => {
         <div className="w-10 h-10 bg-[#e31837] rounded-xl flex items-center justify-center">
           <Dumbbell className="w-5 h-5 text-white" />
         </div>
-        <span className="text-white font-bold text-xl">M-Gym<span className="text-[#e31837]">System</span></span>
+        <span className="text-white font-bold text-xl">M-<span className="text-[#e31837]">Gym</span></span>
       </div>
 
       {/* Indicador de conexión */}
@@ -98,7 +98,7 @@ const Login = ({ onLogin }) => {
               <Dumbbell className="w-10 h-10 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-white mb-2">Bienvenido</h2>
-            <p className="text-gray-400">Ingresa a tu cuenta de M-GymSystem</p>
+            <p className="text-gray-400">Ingresa a tu cuenta de M-Gym</p>
           </div>
 
           {/* Formulario */}
