@@ -280,7 +280,7 @@ const Configuracion = () => {
                     value={config.telefono_contacto}
                     onChange={(e) => handleChange('telefono_contacto', e.target.value)}
                     className="w-full px-3 py-2 bg-[#2d2d2d] border border-[#3d3d3d] rounded-lg text-white focus:outline-none focus:border-[#e31837]"
-                    placeholder="+54 11 1234-5678"
+                    placeholder="+53 56956312"
                   />
                 </div>
 

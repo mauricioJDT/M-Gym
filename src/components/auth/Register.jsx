@@ -263,7 +263,7 @@ const Register = ({ onBackToLogin }) => {
                   value={formData.telefono}
                   onChange={handleChange}
                   className="w-full pl-10 pr-4 py-3 bg-[#2d2d2d] border border-[#3d3d3d] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#e31837] focus:ring-2 focus:ring-[#e31837]/50 transition-all"
-                  placeholder="+54 11 1234-5678"
+                  placeholder="+53 56956312"
                   disabled={loading}
                 />
               </div>

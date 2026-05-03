@@ -1,0 +1,13 @@
+ADMIN:
+1-INVENTARIO(ADMIN)(cambiar los iconos de seleccion)
+2-buscar lospagos demembresiapor fechas
+
+2-PERMISOS ENTRENADOR
+3-PERMISOS ALUMNOS
+4-solicitud de acceso a la app hacia el administrador
+5-si pasan 3 dias sin pagar es baja de la aplicacion
+
+
+
+
+

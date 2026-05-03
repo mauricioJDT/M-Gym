@@ -104,7 +104,7 @@ const Login = ({ onLogin }) => {
           {/* Formulario */}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-gray-300 text-sm font-semibold mb-2">Usuario</label>
+              <label className="block text-gray-300 text-sm font-semibold mb-2">Usuario (admin)</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <User className="w-5 h-5 text-[#e31837]" />
@@ -122,7 +122,7 @@ const Login = ({ onLogin }) => {
             </div>
 
             <div>
-              <label className="block text-gray-300 text-sm font-semibold mb-2">Contraseña</label>
+              <label className="block text-gray-300 text-sm font-semibold mb-2">Contraseña (admin)</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Lock className="w-5 h-5 text-[#e31837]" />

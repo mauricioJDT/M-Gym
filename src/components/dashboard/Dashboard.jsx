@@ -113,7 +113,7 @@ const Dashboard = ({ user, onLogout, initialTab = 'inicio', onTabChange }) => {
     setSidebarOpen(!sidebarOpen)
   }
 
-  // Menu items según el rol
+  // Menu items según el rol (para desktop)
   const getMenuItems = () => {
     if (user.rol === 'admin') {
       return [
@@ -157,48 +157,85 @@ const Dashboard = ({ user, onLogout, initialTab = 'inicio', onTabChange }) => {
     }
   }
 
-  // Obtener items para el navbar móvil - ADMIN ve TODAS las secciones con bordes de color por sección
+  // Obtener items para el navbar móvil - ADMIN ve TODAS las secciones agrupadas por rol con texto debajo de cada grupo
   const getMobileNavItems = () => {
     if (user.rol === 'admin') {
       return [
-        // ===== SECCIÓN ADMIN (Color ROJO) =====
-        { id: 'inicio', label: 'Inicio', icon: <Shield className="w-5 h-5" />, grupo: 'admin', color: 'red' },
-        { id: 'pagos', label: 'Pagos', icon: <DollarSign className="w-5 h-5" />, grupo: 'admin', color: 'red' },
-        { id: 'inventario', label: 'Inventario', icon: <Package className="w-5 h-5" />, grupo: 'admin', color: 'red' },
-        { id: 'alumnos', label: 'Alumnos', icon: <Users className="w-5 h-5" />, badge: solicitudesPendientes, grupo: 'admin', color: 'red' },
-        { id: 'configuracion', label: 'Config.', icon: <Settings className="w-5 h-5" />, grupo: 'admin', color: 'red' },
-        
-        // ===== SECCIÓN ALUMNO (Color VERDE) =====
-        { id: 'alumno_inicio', label: 'Mi Panel', icon: <Home className="w-5 h-5" />, grupo: 'alumno', color: 'green' },
-        { id: 'alumno_rutinas', label: 'Rutinas', icon: <ClipboardList className="w-5 h-5" />, grupo: 'alumno', color: 'green' },
-        { id: 'alumno_dieta', label: 'Dieta', icon: <Apple className="w-5 h-5" />, grupo: 'alumno', color: 'green' },
-        { id: 'alumno_estadisticas', label: 'Stats', icon: <TrendingUp className="w-5 h-5" />, grupo: 'alumno', color: 'green' },
-        { id: 'alumno_configuracion', label: 'Config.', icon: <Settings className="w-5 h-5" />, grupo: 'alumno', color: 'green' },
-        
-        // ===== SECCIÓN ENTRENADOR (Color AZUL) =====
-        { id: 'entrenador_inicio', label: 'Panel', icon: <UserCheck className="w-5 h-5" />, grupo: 'entrenador', color: 'blue' },
-        { id: 'entrenador_alumnos', label: 'Alumnos', icon: <Users className="w-5 h-5" />, grupo: 'entrenador', color: 'blue' },
-        { id: 'entrenador_rutinas', label: 'Rutinas', icon: <ClipboardList className="w-5 h-5" />, grupo: 'entrenador', color: 'blue' },
-        { id: 'entrenador_dietas', label: 'Dietas', icon: <Apple className="w-5 h-5" />, grupo: 'entrenador', color: 'blue' },
-        { id: 'entrenador_estadisticas', label: 'Stats', icon: <TrendingUp className="w-5 h-5" />, grupo: 'entrenador', color: 'blue' },
-        { id: 'entrenador_configuracion', label: 'Config.', icon: <Settings className="w-5 h-5" />, grupo: 'entrenador', color: 'blue' },
+        // ===== GRUPO ADMIN (Color ROJO) =====
+        {
+          type: 'group',
+          label: 'Opciones de Admin',
+          color: 'red',
+          items: [
+            { id: 'inicio', label: 'Inicio', icon: <Shield className="w-5 h-5" />, color: 'red' },
+            { id: 'pagos', label: 'Pagos', icon: <DollarSign className="w-5 h-5" />, color: 'red' },
+            { id: 'inventario', label: 'Inventario', icon: <Package className="w-5 h-5" />, color: 'red' },
+            { id: 'alumnos', label: 'Alumnos', icon: <Users className="w-5 h-5" />, badge: solicitudesPendientes, color: 'red' },
+            { id: 'configuracion', label: 'Config.', icon: <Settings className="w-5 h-5" />, color: 'red' },
+          ]
+        },
+        // Divisor entre ADMIN y ALUMNO
+        { type: 'divider' },
+        // ===== GRUPO ALUMNO (Color AZUL) =====
+        {
+          type: 'group',
+          label: 'Opciones de Alumno',
+          color: 'blue',
+          items: [
+            { id: 'alumno_inicio', label: 'Mi Panel', icon: <Home className="w-5 h-5" />, color: 'blue' },
+            { id: 'alumno_rutinas', label: 'Rutinas', icon: <ClipboardList className="w-5 h-5" />, color: 'blue' },
+            { id: 'alumno_dieta', label: 'Dieta', icon: <Apple className="w-5 h-5" />, color: 'blue' },
+            { id: 'alumno_estadisticas', label: 'Stats', icon: <TrendingUp className="w-5 h-5" />, color: 'blue' },
+            { id: 'alumno_configuracion', label: 'Config.', icon: <Settings className="w-5 h-5" />, color: 'blue' },
+          ]
+        },
+        // Divisor entre ALUMNO y ENTRENADOR
+        { type: 'divider' },
+        // ===== GRUPO ENTRENADOR (Color VERDE) =====
+        {
+          type: 'group',
+          label: 'Opciones de Entrenador',
+          color: 'green',
+          items: [
+            { id: 'entrenador_inicio', label: 'Panel', icon: <UserCheck className="w-5 h-5" />, color: 'green' },
+            { id: 'entrenador_alumnos', label: 'Alumnos', icon: <Users className="w-5 h-5" />, color: 'green' },
+            { id: 'entrenador_rutinas', label: 'Rutinas', icon: <ClipboardList className="w-5 h-5" />, color: 'green' },
+            { id: 'entrenador_dietas', label: 'Dietas', icon: <Apple className="w-5 h-5" />, color: 'green' },
+            { id: 'entrenador_estadisticas', label: 'Stats', icon: <TrendingUp className="w-5 h-5" />, color: 'green' },
+            { id: 'entrenador_configuracion', label: 'Config.', icon: <Settings className="w-5 h-5" />, color: 'green' },
+          ]
+        },
       ]
     } else if (user.rol === 'entrenador') {
       return [
-        { id: 'inicio', label: 'Inicio', icon: <Home className="w-5 h-5" />, color: 'blue' },
-        { id: 'mis_alumnos', label: 'Alumnos', icon: <Users className="w-5 h-5" />, color: 'blue' },
-        { id: 'rutinas', label: 'Rutinas', icon: <ClipboardList className="w-5 h-5" />, color: 'blue' },
-        { id: 'dietas', label: 'Dietas', icon: <Apple className="w-5 h-5" />, color: 'blue' },
-        { id: 'estadisticas', label: 'Stats', icon: <TrendingUp className="w-5 h-5" />, color: 'blue' },
-        { id: 'configuracion', label: 'Config.', icon: <Settings className="w-5 h-5" />, color: 'blue' },
+        {
+          type: 'group',
+          label: 'Opciones de Entrenador',
+          color: 'green',
+          items: [
+            { id: 'inicio', label: 'Inicio', icon: <Home className="w-5 h-5" />, color: 'green' },
+            { id: 'mis_alumnos', label: 'Alumnos', icon: <Users className="w-5 h-5" />, color: 'green' },
+            { id: 'rutinas', label: 'Rutinas', icon: <ClipboardList className="w-5 h-5" />, color: 'green' },
+            { id: 'dietas', label: 'Dietas', icon: <Apple className="w-5 h-5" />, color: 'green' },
+            { id: 'estadisticas', label: 'Stats', icon: <TrendingUp className="w-5 h-5" />, color: 'green' },
+            { id: 'configuracion', label: 'Config.', icon: <Settings className="w-5 h-5" />, color: 'green' },
+          ]
+        },
       ]
     } else {
       return [
-        { id: 'inicio', label: 'Inicio', icon: <Home className="w-5 h-5" />, color: 'green' },
-        { id: 'rutinas', label: 'Rutinas', icon: <ClipboardList className="w-5 h-5" />, color: 'green' },
-        { id: 'dieta', label: 'Dieta', icon: <Apple className="w-5 h-5" />, color: 'green' },
-        { id: 'estadisticas', label: 'Stats', icon: <TrendingUp className="w-5 h-5" />, color: 'green' },
-        { id: 'configuracion', label: 'Config.', icon: <Settings className="w-5 h-5" />, color: 'green' },
+        {
+          type: 'group',
+          label: 'Opciones de Alumno',
+          color: 'blue',
+          items: [
+            { id: 'inicio', label: 'Inicio', icon: <Home className="w-5 h-5" />, color: 'blue' },
+            { id: 'rutinas', label: 'Rutinas', icon: <ClipboardList className="w-5 h-5" />, color: 'blue' },
+            { id: 'dieta', label: 'Dieta', icon: <Apple className="w-5 h-5" />, color: 'blue' },
+            { id: 'estadisticas', label: 'Stats', icon: <TrendingUp className="w-5 h-5" />, color: 'blue' },
+            { id: 'configuracion', label: 'Config.', icon: <Settings className="w-5 h-5" />, color: 'blue' },
+          ]
+        },
       ]
     }
   }
@@ -214,9 +251,9 @@ const Dashboard = ({ user, onLogout, initialTab = 'inicio', onTabChange }) => {
     
     let roleStyle = ''
     if (item.tipo === 'alumno' && user.rol === 'admin') {
-      roleStyle = 'border-l-2 border-l-green-500/30 bg-green-500/5'
-    } else if (item.tipo === 'entrenador' && user.rol === 'admin') {
       roleStyle = 'border-l-2 border-l-blue-500/30 bg-blue-500/5'
+    } else if (item.tipo === 'entrenador' && user.rol === 'admin') {
+      roleStyle = 'border-l-2 border-l-green-500/30 bg-green-500/5'
     }
     
     return `${baseStyle} ${activeStyle} ${roleStyle}`
@@ -313,8 +350,8 @@ const Dashboard = ({ user, onLogout, initialTab = 'inicio', onTabChange }) => {
               <span className="text-white font-bold truncate">M-GymSystem</span>
               <span className={`text-xs px-2 py-0.5 rounded-full flex-shrink-0 ${
                 user.rol === 'admin' ? 'bg-red-500/20 text-red-400' : 
-                user.rol === 'entrenador' ? 'bg-blue-500/20 text-blue-400' : 
-                'bg-green-500/20 text-green-400'
+                user.rol === 'entrenador' ? 'bg-green-500/20 text-green-400' : 
+                'bg-blue-500/20 text-blue-400'
               }`}>
                 {user.rol === 'admin' ? 'Admin' : user.rol === 'entrenador' ? 'Entrenador' : 'Alumno'}
               </span>
@@ -360,10 +397,10 @@ const Dashboard = ({ user, onLogout, initialTab = 'inicio', onTabChange }) => {
                       </span>
                     )}
                     {item.tipo === 'alumno' && user.rol === 'admin' && (
-                      <span className="text-[10px] bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded ml-2 flex-shrink-0">Alumno</span>
+                      <span className="text-[10px] bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded ml-2 flex-shrink-0">Alumno</span>
                     )}
                     {item.tipo === 'entrenador' && user.rol === 'admin' && (
-                      <span className="text-[10px] bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded ml-2 flex-shrink-0">Entrenador</span>
+                      <span className="text-[10px] bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded ml-2 flex-shrink-0">Entrenador</span>
                     )}
                   </div>
                 )}
@@ -387,7 +424,7 @@ const Dashboard = ({ user, onLogout, initialTab = 'inicio', onTabChange }) => {
               <p className="text-gray-500 text-xs truncate">@{user.username}</p>
               <p className={`text-xs mt-1 capitalize ${
                 user.rol === 'admin' ? 'text-red-400' : 
-                user.rol === 'entrenador' ? 'text-blue-400' : 'text-green-400'
+                user.rol === 'entrenador' ? 'text-green-400' : 'text-blue-400'
               }`}>
                 {user.rol}
               </p>
@@ -405,7 +442,7 @@ const Dashboard = ({ user, onLogout, initialTab = 'inicio', onTabChange }) => {
 
       {/* Main Content */}
       <div className="flex-1 overflow-y-auto h-full w-full flex flex-col">
-        {/* Navbar superior para móviles - Bordes de color por sección */}
+        {/* Navbar superior para móviles - Grupos de opciones con texto debajo de cada grupo */}
         <div className="md:hidden sticky top-0 z-30 bg-[#0f0f0f]/95 backdrop-blur-md border-b border-[#2d2d2d]">
           {/* Logo y usuario */}
           <div className="flex items-center justify-between px-4 py-3">
@@ -416,8 +453,8 @@ const Dashboard = ({ user, onLogout, initialTab = 'inicio', onTabChange }) => {
               <span className="text-white font-bold text-lg">M-GymSystem</span>
               <span className={`text-[10px] px-2 py-0.5 rounded-full ${
                 user.rol === 'admin' ? 'bg-red-500/20 text-red-400' : 
-                user.rol === 'entrenador' ? 'bg-blue-500/20 text-blue-400' : 
-                'bg-green-500/20 text-green-400'
+                user.rol === 'entrenador' ? 'bg-green-500/20 text-green-400' : 
+                'bg-blue-500/20 text-blue-400'
               }`}>
                 {user.rol === 'admin' ? 'Admin' : user.rol === 'entrenador' ? 'Entrenador' : 'Alumno'}
               </span>
@@ -430,64 +467,70 @@ const Dashboard = ({ user, onLogout, initialTab = 'inicio', onTabChange }) => {
             </button>
           </div>
           
-          {/* Navegación horizontal con scroll - Bordes de color por sección */}
-          <div className="overflow-x-auto scrollbar-hide border-t border-[#2d2d2d]">
-            <div className="flex items-center px-2 py-2 gap-1 min-w-max">
+          {/* Navegación móvil con grupos separados por rayas y texto debajo de cada grupo */}
+          <div className="overflow-x-auto overflow-y-hidden scrollbar-hide border-t border-[#2d2d2d]">
+            <div className="flex flex-nowrap items-stretch px-2 py-2 gap-2 min-w-max">
               {mobileNavItems.map((item, idx) => {
-                const isActive = activeTab === item.id
-                
-                // Obtener colores según el grupo
-                let borderColor = ''
-                let textColor = ''
-                let bgActive = ''
-                
-                if (item.color === 'red') {
-                  borderColor = 'border-red-500/50'
-                  textColor = isActive ? 'text-red-400' : 'text-gray-400'
-                  bgActive = isActive ? 'bg-red-500/10' : ''
-                } else if (item.color === 'green') {
-                  borderColor = 'border-green-500/50'
-                  textColor = isActive ? 'text-green-400' : 'text-gray-400'
-                  bgActive = isActive ? 'bg-green-500/10' : ''
-                } else if (item.color === 'blue') {
-                  borderColor = 'border-blue-500/50'
-                  textColor = isActive ? 'text-blue-400' : 'text-gray-400'
-                  bgActive = isActive ? 'bg-blue-500/10' : ''
-                } else {
-                  borderColor = 'border-[#e31837]/50'
-                  textColor = isActive ? 'text-[#e31837]' : 'text-gray-400'
-                  bgActive = isActive ? 'bg-[#e31837]/10' : ''
+                // Renderizar divisor (raya vertical)
+                if (item.type === 'divider') {
+                  return (
+                    <div key={`divider-${idx}`} className="flex-shrink-0 w-px bg-gradient-to-b from-transparent via-[#2d2d2d] to-transparent mx-1 self-stretch"></div>
+                  )
                 }
                 
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => {
-                      setActiveTab(item.id)
-                      setFiltroPagos(null)
-                    }}
-                    className={`relative flex flex-col items-center px-3 py-2 rounded-lg transition-all ${bgActive} ${isActive ? `border ${borderColor}` : ''}`}
-                  >
-                    <div className="relative">
-                      <div className={isActive ? textColor : 'text-gray-400'}>
-                        {item.icon}
+                // Renderizar grupo de opciones
+                if (item.type === 'group') {
+                  const groupColor = item.color === 'red' ? 'red' : item.color === 'blue' ? 'blue' : 'green'
+                  const textColorClass = groupColor === 'red' ? 'text-red-400' : groupColor === 'blue' ? 'text-blue-400' : 'text-green-400'
+                  const borderColorClass = groupColor === 'red' ? 'border-red-500/50' : groupColor === 'blue' ? 'border-blue-500/50' : 'border-green-500/50'
+                  const bgActiveClass = groupColor === 'red' ? 'bg-red-500/10' : groupColor === 'blue' ? 'bg-blue-500/10' : 'bg-green-500/10'
+                  const indicatorColorClass = groupColor === 'red' ? 'bg-red-400' : groupColor === 'blue' ? 'bg-blue-400' : 'bg-green-400'
+                  
+                  return (
+                    <div key={`group-${idx}`} className="flex flex-col items-center gap-1 flex-shrink-0">
+                      {/* Opciones del grupo */}
+                      <div className="flex gap-1">
+                        {item.items.map((subItem) => {
+                          const isActive = activeTab === subItem.id
+                          
+                          return (
+                            <button
+                              key={subItem.id}
+                              onClick={() => {
+                                setActiveTab(subItem.id)
+                                setFiltroPagos(null)
+                              }}
+                              className={`relative flex flex-col items-center px-3 py-2 rounded-lg transition-all ${isActive ? `${bgActiveClass} border ${borderColorClass}` : ''}`}
+                            >
+                              <div className="relative">
+                                <div className={isActive ? textColorClass : 'text-gray-400'}>
+                                  {subItem.icon}
+                                </div>
+                                {subItem.badge > 0 && (
+                                  <span className="absolute -top-1 -right-2 bg-red-500 text-white text-[9px] rounded-full px-1 min-w-[16px] h-4 flex items-center justify-center">
+                                    {subItem.badge}
+                                  </span>
+                                )}
+                              </div>
+                              <span className={`text-[9px] mt-1 font-medium text-center whitespace-nowrap ${isActive ? textColorClass : 'text-gray-400'}`}>
+                                {subItem.label}
+                              </span>
+                              {isActive && (
+                                <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-0.5 rounded-full ${indicatorColorClass}`} />
+                              )}
+                            </button>
+                          )
+                        })}
                       </div>
-                      {item.badge > 0 && (
-                        <span className="absolute -top-1 -right-2 bg-red-500 text-white text-[9px] rounded-full px-1 min-w-[16px] h-4 flex items-center justify-center">
-                          {item.badge}
-                        </span>
-                      )}
+                      {/* Texto debajo del grupo */}
+                      <span className={`text-[9px] font-medium tracking-wider ${textColorClass}`}>
+                        {item.label}
+                      </span>
                     </div>
-                    <span className={`text-[9px] mt-1 font-medium text-center ${textColor}`}>
-                      {item.label}
-                    </span>
-                    {isActive && (
-                      <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-0.5 rounded-full ${
-                        item.color === 'red' ? 'bg-red-400' : item.color === 'green' ? 'bg-green-400' : item.color === 'blue' ? 'bg-blue-400' : 'bg-[#e31837]'
-                      }`} />
-                    )}
-                  </button>
-                )
+                  )
+                }
+                
+                return null
               })}
             </div>
           </div>
